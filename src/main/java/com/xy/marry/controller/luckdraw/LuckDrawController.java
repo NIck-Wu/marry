@@ -15,7 +15,7 @@ import com.xy.marry.server.UserService;
 public class LuckDrawController {
 	@Autowired
 	private UserService userService;
-
+ //test
 	/**
 	 * 抽奖
 	 * 
