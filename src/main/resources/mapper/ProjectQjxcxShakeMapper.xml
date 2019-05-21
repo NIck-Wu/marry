@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xy.marry.mapper.ProjectQjxcxShakeMapper">
+  <resultMap id="BaseResultMap" type="com.xy.marry.entity.ProjectQjxcxShake">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="qjxcx_id" jdbcType="INTEGER" property="qjxcxId" />
+    <result column="participants" jdbcType="INTEGER" property="participants" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="state" jdbcType="TINYINT" property="state" />
+    <result column="shake_range" jdbcType="DOUBLE" property="shakeRange" />
+    <result column="count_down" jdbcType="INTEGER" property="countDown" />
+    <result column="room_name" jdbcType="VARCHAR" property="roomName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, qjxcx_id, participants, add_time, update_time, is_delete, state, shake_range, count_down, room_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from m_project_qjxcx_shake
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from m_project_qjxcx_shake
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xy.marry.entity.ProjectQjxcxShake">
+    insert into m_project_qjxcx_shake (id, qjxcx_id, participants, 
+      add_time, update_time, is_delete, 
+      state)
+    values (#{id,jdbcType=INTEGER}, #{qjxcxId,jdbcType=INTEGER}, #{participants,jdbcType=INTEGER}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}, 
+      #{state,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xy.marry.entity.ProjectQjxcxShake">
+    insert into m_project_qjxcx_shake
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="qjxcxId != null">
+        qjxcx_id,
+      </if>
+      <if test="participants != null">
+        participants,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="qjxcxId != null">
+        #{qjxcxId,jdbcType=INTEGER},
+      </if>
+      <if test="participants != null">
+        #{participants,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xy.marry.entity.ProjectQjxcxShake">
+    update m_project_qjxcx_shake
+    <set>
+      <if test="qjxcxId != null">
+        qjxcx_id = #{qjxcxId,jdbcType=INTEGER},
+      </if>
+      <if test="participants != null">
+        participants = #{participants,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xy.marry.entity.ProjectQjxcxShake">
+    update m_project_qjxcx_shake
+    set qjxcx_id = #{qjxcxId,jdbcType=INTEGER},
+      participants = #{participants,jdbcType=INTEGER},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      state = #{state,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!--  获取一个当前正在进行中的游戏-->
+   <select id="getOngoingShakeGame" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from m_project_qjxcx_shake
+    where state = 2
+  </select>
+</mapper>

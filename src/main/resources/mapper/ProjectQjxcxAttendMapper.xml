@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xy.marry.mapper.ProjectQjxcxAttendMapper">
+  <resultMap id="BaseResultMap" type="com.xy.marry.entity.ProjectQjxcxAttend">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="avatar_url" jdbcType="VARCHAR" property="avatarUrl" />
+    <result column="qjxcx_id" jdbcType="INTEGER" property="qjxcxId" />
+    <result column="attend_name" jdbcType="VARCHAR" property="attendName" />
+    <result column="attend_phone" jdbcType="VARCHAR" property="attendPhone" />
+    <result column="attend_plan" jdbcType="VARCHAR" property="attendPlan" />
+    <result column="attend_memo" jdbcType="VARCHAR" property="attendMemo" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="state" jdbcType="TINYINT" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    xy.id, xy.user_id, xy.qjxcx_id, xy.attend_name, xy.attend_phone, xy.attend_plan, xy.attend_memo, xy.add_time, 
+    xy.update_time, xy.is_delete, xy.state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from m_project_qjxcx_attend as xy
+    where xy.id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from m_project_qjxcx_attend
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xy.marry.entity.ProjectQjxcxAttend">
+    insert into m_project_qjxcx_attend (id, user_id, qjxcx_id, 
+      attend_name, attend_phone, attend_plan, 
+      attend_memo, add_time, update_time, 
+      is_delete, state)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{qjxcxId,jdbcType=INTEGER}, 
+      #{attendName,jdbcType=VARCHAR}, #{attendPhone,jdbcType=VARCHAR}, #{attendPlan,jdbcType=VARCHAR}, 
+      #{attendMemo,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=TINYINT}, #{state,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xy.marry.entity.ProjectQjxcxAttend">
+    insert into m_project_qjxcx_attend
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="qjxcxId != null">
+        qjxcx_id,
+      </if>
+      <if test="attendName != null">
+        attend_name,
+      </if>
+      <if test="attendPhone != null">
+        attend_phone,
+      </if>
+      <if test="attendPlan != null">
+        attend_plan,
+      </if>
+      <if test="attendMemo != null">
+        attend_memo,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="qjxcxId != null">
+        #{qjxcxId,jdbcType=INTEGER},
+      </if>
+      <if test="attendName != null">
+        #{attendName,jdbcType=VARCHAR},
+      </if>
+      <if test="attendPhone != null">
+        #{attendPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="attendPlan != null">
+        #{attendPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="attendMemo != null">
+        #{attendMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xy.marry.entity.ProjectQjxcxAttend">
+    update m_project_qjxcx_attend
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="qjxcxId != null">
+        qjxcx_id = #{qjxcxId,jdbcType=INTEGER},
+      </if>
+      <if test="attendName != null">
+        attend_name = #{attendName,jdbcType=VARCHAR},
+      </if>
+      <if test="attendPhone != null">
+        attend_phone = #{attendPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="attendPlan != null">
+        attend_plan = #{attendPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="attendMemo != null">
+        attend_memo = #{attendMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xy.marry.entity.ProjectQjxcxAttend">
+    update m_project_qjxcx_attend
+    set user_id = #{userId,jdbcType=INTEGER},
+      qjxcx_id = #{qjxcxId,jdbcType=INTEGER},
+      attend_name = #{attendName,jdbcType=VARCHAR},
+      attend_phone = #{attendPhone,jdbcType=VARCHAR},
+      attend_plan = #{attendPlan,jdbcType=VARCHAR},
+      attend_memo = #{attendMemo,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      state = #{state,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByQjxcxIdKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />,user.nick_name,user.avatar_url
+    from m_project_qjxcx_attend as xy left join m_user as user on xy.user_id = user.id where 1=1 
+    and xy.qjxcx_id = #{qjxcxId,jdbcType=INTEGER} and xy.state=1 and xy.is_delete=0 order by xy.add_time desc
+  </select>
+  <select id="selectByUserIdAndQjxcxIdKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />,user.nick_name,user.avatar_url
+    from m_project_qjxcx_attend as xy left join m_user as user on xy.user_id = user.id where 1=1 
+    and xy.user_id = #{userId,jdbcType=INTEGER} and xy.qjxcx_id = #{qjxcxId,jdbcType=INTEGER}
+    and xy.state=1 and xy.is_delete=0 order by xy.add_time desc
+  </select>
+</mapper>

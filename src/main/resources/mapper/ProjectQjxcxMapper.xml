@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xy.marry.mapper.ProjectQjxcxMapper">
+	<resultMap id="BaseResultMap"
+		type="com.xy.marry.entity.ProjectQjxcx">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="merchant_id" jdbcType="INTEGER"
+			property="merchantId" />
+		<result column="merchant_project_id" jdbcType="INTEGER"
+			property="merchantProjectId" />
+		<result column="he_name" jdbcType="VARCHAR" property="heName" />
+		<result column="she_name" jdbcType="VARCHAR" property="sheName" />
+		<result column="he_tel" jdbcType="VARCHAR" property="heTel" />
+		<result column="she_tel" jdbcType="VARCHAR" property="sheTel" />
+		<result column="marry_date" jdbcType="VARCHAR"
+			property="marryDate" />
+		<result column="marry_date_lunar" jdbcType="VARCHAR"
+			property="marryDateLunar" />
+		<result column="cover" jdbcType="VARCHAR" property="cover" />
+		<result column="music_id" jdbcType="INTEGER" property="musicId" />
+		<result column="music_url" jdbcType="VARCHAR"
+			property="musicUrl" />
+		<result column="hotel" jdbcType="VARCHAR" property="hotel" />
+		<result column="address" jdbcType="VARCHAR" property="address" />
+		<result column="lat" jdbcType="DOUBLE" property="lat" />
+		<result column="lng" jdbcType="DOUBLE" property="lng" />
+		<result column="share" jdbcType="VARCHAR" property="share" />
+		<result column="share_thumb" jdbcType="VARCHAR"
+			property="shareThumb" />
+		<result column="xcx_img" jdbcType="VARCHAR" property="xcxImg" />
+		<result column="add_time" jdbcType="TIMESTAMP"
+			property="addTime" />
+		<result column="update_time" jdbcType="TIMESTAMP"
+			property="updateTime" />
+		<result column="state" jdbcType="TINYINT" property="state" />
+		<result column="is_delete" jdbcType="TINYINT"
+			property="isDelete" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		xy.id, xy.merchant_id, xy.merchant_project_id, xy.he_name, xy.she_name, xy.he_tel, xy.she_tel,
+		xy.marry_date,
+		xy.marry_date_lunar, xy.cover, xy.music_id ,xy.hotel, xy.address, xy.lat, xy.lng, xy.share, xy.share_thumb,
+		xy.xcx_img, xy.add_time, xy.update_time, xy.state, xy.is_delete
+	</sql>
+	<select id="selectByPrimaryKey"
+		parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from m_project_qjxcx as xy
+		where xy.id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey"
+		parameterType="java.lang.Integer">
+		delete from m_project_qjxcx
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert"
+		parameterType="com.xy.marry.entity.ProjectQjxcx">
+		insert into m_project_qjxcx (id, merchant_id, merchant_project_id,
+		he_name, she_name, he_tel,
+		she_tel, marry_date, marry_date_lunar,
+		cover, music_id, hotel,
+		address, lat, lng, share,
+		share_thumb, xcx_img, add_time,
+		update_time, state, is_delete
+		)
+		values (#{id,jdbcType=INTEGER}, #{merchantId,jdbcType=INTEGER},
+		#{merchantProjectId,jdbcType=INTEGER},
+		#{heName,jdbcType=VARCHAR}, #{sheName,jdbcType=VARCHAR}, #{heTel,jdbcType=VARCHAR},
+		#{sheTel,jdbcType=VARCHAR}, #{marryDate,jdbcType=VARCHAR},
+		#{marryDateLunar,jdbcType=VARCHAR},
+		#{cover,jdbcType=VARCHAR}, #{musicId,jdbcType=INTEGER}, #{hotel,jdbcType=VARCHAR},
+		#{address,jdbcType=VARCHAR}, #{lat,jdbcType=DOUBLE},
+		#{lng,jdbcType=DOUBLE}, #{share,jdbcType=VARCHAR},
+		#{shareThumb,jdbcType=VARCHAR}, #{xcxImg,jdbcType=VARCHAR},
+		#{addTime,jdbcType=TIMESTAMP},
+		#{updateTime,jdbcType=TIMESTAMP}, #{state,jdbcType=TINYINT}, #{isDelete,jdbcType=TINYINT}
+		)
+	</insert>
+	<insert id="insertSelective"
+		parameterType="com.xy.marry.entity.ProjectQjxcx">
+		insert into m_project_qjxcx
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="merchantId != null">
+				merchant_id,
+			</if>
+			<if test="merchantProjectId != null">
+				merchant_project_id,
+			</if>
+			<if test="heName != null">
+				he_name,
+			</if>
+			<if test="sheName != null">
+				she_name,
+			</if>
+			<if test="heTel != null">
+				he_tel,
+			</if>
+			<if test="sheTel != null">
+				she_tel,
+			</if>
+			<if test="marryDate != null">
+				marry_date,
+			</if>
+			<if test="marryDateLunar != null">
+				marry_date_lunar,
+			</if>
+			<if test="cover != null">
+				cover,
+			</if>
+			<if test="musicId != null">
+				music_id,
+			</if>
+			<if test="hotel != null">
+				hotel,
+			</if>
+			<if test="address != null">
+				address,
+			</if>
+			<if test="lat != null">
+				lat,
+			</if>
+			<if test="lng != null">
+				lng,
+			</if>
+			<if test="share != null">
+				share,
+			</if>
+			<if test="shareThumb != null">
+				share_thumb,
+			</if>
+			<if test="xcxImg != null">
+				xcx_img,
+			</if>
+			<if test="addTime != null">
+				add_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="state != null">
+				state,
+			</if>
+			<if test="isDelete != null">
+				is_delete,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="merchantId != null">
+				#{merchantId,jdbcType=INTEGER},
+			</if>
+			<if test="merchantProjectId != null">
+				#{merchantProjectId,jdbcType=INTEGER},
+			</if>
+			<if test="heName != null">
+				#{heName,jdbcType=VARCHAR},
+			</if>
+			<if test="sheName != null">
+				#{sheName,jdbcType=VARCHAR},
+			</if>
+			<if test="heTel != null">
+				#{heTel,jdbcType=VARCHAR},
+			</if>
+			<if test="sheTel != null">
+				#{sheTel,jdbcType=VARCHAR},
+			</if>
+			<if test="marryDate != null">
+				#{marryDate,jdbcType=VARCHAR},
+			</if>
+			<if test="marryDateLunar != null">
+				#{marryDateLunar,jdbcType=VARCHAR},
+			</if>
+			<if test="cover != null">
+				#{cover,jdbcType=VARCHAR},
+			</if>
+			<if test="musicId != null">
+				#{musicId,jdbcType=INTEGER},
+			</if>
+			<if test="hotel != null">
+				#{hotel,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="lat != null">
+				#{lat,jdbcType=DOUBLE},
+			</if>
+			<if test="lng != null">
+				#{lng,jdbcType=DOUBLE},
+			</if>
+			<if test="share != null">
+				#{share,jdbcType=VARCHAR},
+			</if>
+			<if test="shareThumb != null">
+				#{shareThumb,jdbcType=VARCHAR},
+			</if>
+			<if test="xcxImg != null">
+				#{xcxImg,jdbcType=VARCHAR},
+			</if>
+			<if test="addTime != null">
+				#{addTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="state != null">
+				#{state,jdbcType=TINYINT},
+			</if>
+			<if test="isDelete != null">
+				#{isDelete,jdbcType=TINYINT},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.xy.marry.entity.ProjectQjxcx">
+		update m_project_qjxcx
+		<set>
+			<if test="merchantId != null">
+				merchant_id = #{merchantId,jdbcType=INTEGER},
+			</if>
+			<if test="merchantProjectId != null">
+				merchant_project_id = #{merchantProjectId,jdbcType=INTEGER},
+			</if>
+			<if test="heName != null">
+				he_name = #{heName,jdbcType=VARCHAR},
+			</if>
+			<if test="sheName != null">
+				she_name = #{sheName,jdbcType=VARCHAR},
+			</if>
+			<if test="heTel != null">
+				he_tel = #{heTel,jdbcType=VARCHAR},
+			</if>
+			<if test="sheTel != null">
+				she_tel = #{sheTel,jdbcType=VARCHAR},
+			</if>
+			<if test="marryDate != null">
+				marry_date = #{marryDate,jdbcType=VARCHAR},
+			</if>
+			<if test="marryDateLunar != null">
+				marry_date_lunar = #{marryDateLunar,jdbcType=VARCHAR},
+			</if>
+			<if test="cover != null">
+				cover = #{cover,jdbcType=VARCHAR},
+			</if>
+			<if test="musicId != null">
+				music_id = #{musicId,jdbcType=INTEGER},
+			</if>
+			<if test="hotel != null">
+				hotel = #{hotel,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="lat != null">
+				lat = #{lat,jdbcType=DOUBLE},
+			</if>
+			<if test="lng != null">
+				lng = #{lng,jdbcType=DOUBLE},
+			</if>
+			<if test="share != null">
+				share = #{share,jdbcType=VARCHAR},
+			</if>
+			<if test="shareThumb != null">
+				share_thumb = #{shareThumb,jdbcType=VARCHAR},
+			</if>
+			<if test="xcxImg != null">
+				xcx_img = #{xcxImg,jdbcType=VARCHAR},
+			</if>
+			<if test="addTime != null">
+				add_time = #{addTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="state != null">
+				state = #{state,jdbcType=TINYINT},
+			</if>
+			<if test="isDelete != null">
+				is_delete = #{isDelete,jdbcType=TINYINT},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="com.xy.marry.entity.ProjectQjxcx">
+		update m_project_qjxcx
+		set merchant_id = #{merchantId,jdbcType=INTEGER},
+		merchant_project_id = #{merchantProjectId,jdbcType=INTEGER},
+		he_name = #{heName,jdbcType=VARCHAR},
+		she_name = #{sheName,jdbcType=VARCHAR},
+		he_tel = #{heTel,jdbcType=VARCHAR},
+		she_tel = #{sheTel,jdbcType=VARCHAR},
+		marry_date = #{marryDate,jdbcType=VARCHAR},
+		marry_date_lunar = #{marryDateLunar,jdbcType=VARCHAR},
+		cover = #{cover,jdbcType=VARCHAR},
+		music_id = #{musicId,jdbcType=INTEGER},
+		hotel = #{hotel,jdbcType=VARCHAR},
+		address = #{address,jdbcType=VARCHAR},
+		lat = #{lat,jdbcType=DOUBLE},
+		lng = #{lng,jdbcType=DOUBLE},
+		share = #{share,jdbcType=VARCHAR},
+		share_thumb = #{shareThumb,jdbcType=VARCHAR},
+		xcx_img = #{xcxImg,jdbcType=VARCHAR},
+		add_time = #{addTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		state = #{state,jdbcType=TINYINT},
+		is_delete = #{isDelete,jdbcType=TINYINT}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<select id="selectByMerchantKey"
+		parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />,music.music_url
+		from m_project_qjxcx as xy left join m_music as music on xy.music_id=music.id where 1=1
+		<if test="merchantId != null">
+			and xy.merchant_id = #{merchantId,jdbcType=INTEGER}
+		</if>
+		<if test="merchantProjectId != null">
+			and xy.merchant_project_id = #{merchantProjectId,jdbcType=INTEGER}
+		</if>
+		and xy.state=1 and xy.is_delete=0 order by xy.add_time desc limit 1
+	</select>
+</mapper>
